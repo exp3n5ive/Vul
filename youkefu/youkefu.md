@@ -1,6 +1,6 @@
 In the file `com/ukefu/webim/web/handler/resource/MediaController.java`, there is code that allows the server to make requests to a URL provided by the user. This behavior can lead to a **Server-Side Request Forgery (SSRF)** vulnerability.
 
-![image-20250320185115950](image-20250320185115950.png)
+![image-20250320185115950](./image-20250320185115950.png)
 
 Poc:
 
@@ -23,4 +23,4 @@ Priority: u=0, i
 
 ```
 
-![image-20250320185503858](image-20250320185503858.png)
+![image-20250320185503858](./image-20250320185503858.png)
